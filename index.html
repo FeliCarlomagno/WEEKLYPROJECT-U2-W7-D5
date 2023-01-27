@@ -12,9 +12,84 @@
     />
   </head>
   <body>
-    <h1>Hello, world!</h1>
-    <header></header>
-    <main></main>
+    <header>
+      <!--NAVBAR-->
+      <nav class="navbar bg-body-tertiary">
+        <div class="container-fluid w-100">
+          <a class="navbar-brand w-25 d-flex align-items-center" href="#">
+            <img
+              src="/Assets/image/c28747d4-c315-4ae8-8c7b-5ac8a12a85da.png"
+              class="d-inline-block align-text-top w-25"
+            />
+          </a>
+        </div>
+      </nav>
+      <h1 class="text-center">Canzoni preferite!</h1>
+      <!--FINE NAVBAR-->
+    </header>
+    <main>
+      <!--PRIMA SEZIONE-->
+      <article>
+        <div class="container">
+          <div class="row" id="cardAppend"></div>
+        </div>
+      </article>
+    </main>
+    <!--FINE PRIMA SEZIONE-->
+
+    <!--SECONDA SEZIONE-->
+    <article>
+      <div class="container2">
+        <div class="row d-flex justify-content-center" id="cardAppend2">
+          <h3 class="text-center">CANZONE PREFERITA</h3>
+        </div>
+      </div>
+    </article>
+    <!--FINE SECONDA SEZIONE-->
+
+    <!--CAROUSEL-->
+    <div class="d-flex justify-content-center">
+      <div
+        id="carouselExampleAutoplaying"
+        class="carousel slide"
+        data-bs-ride="carousel"
+      >
+        <div class="carousel-inner">
+          <div class="carousel-item active w-25" id="carouselImg"></div>
+          <div class="carousel-item w-25" id="carouselImg2">
+            <!--<img src="..." class="d-block w-100" alt="..." />-->
+          </div>
+          <div class="carousel-item w-25" id="carouselImg3">
+            <!--<img src="..." class="d-block w-100" alt="..." />-->
+          </div>
+        </div>
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#carouselExampleAutoplaying"
+          data-bs-slide="prev"
+        >
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#carouselExampleAutoplaying"
+          data-bs-slide="next"
+        >
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+    <!--FINE CAROUSEL-->
+
+    <!--BOTTONE ELIMINA-->
+    <button type="button" class="btn btn-danger" id="buttonDelete">
+      Trova la cancone più vecchia
+    </button>
+    <!--FINE BOTTONE ELIMINA-->
     <footer></footer>
     <!--SCRIPT-->
     <script src="./index.js"></script>
