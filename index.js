@@ -1,123 +1,125 @@
+let arrayAlbums = [];
+let arraySong = [];
+
 const fetchReference = async function () {
   try {
     let response = await fetch(
-      "https://striveschool-api.herokuapp.com/api/deezer/search?q=eminem"
+      "https://striveschool-api.herokuapp.com/api/deezer/search?q=Salmo",
+      { method: "GET" }
     );
     console.log(response);
     if (response.ok) {
-      let data = await response.json();
-      let jsonArray = data.data;
-      console.log("datiArray", jsonArray);
+      let songs = await response.json();
+      let songListOne = songs.data;
+      console.log("songList", songListOne);
 
       const cardReference = document.getElementById("cardAppend");
-      /*jsonArray.forEach((song) => {
+      for (let i = 0; i < 3; i++) {
         let newCard = document.createElement("div");
-        (newCard.innerHTML =
+        newCard.classList.add("card", "col-3", "w-25", "m-3");
+        newCard.innerHTML =
           newCard.innerHTML +
-          `<div class="card" style="width: 18rem;">
-        <img src="${song.album.cover_xl}" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">${song.title}</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
+          `
+        <img src="${songListOne[i].album.cover_xl}" class="card-img-top mt-2 rounded" alt="${songListOne[i].album.title}">
+        <div class="card-body d-flex flex-column justify-content-center align-items-center w-100">
+          <h5 class="card-title text-center">${songListOne[i].album.title}</h5>
+          <p class="card-text">${songListOne[i].title}</p>
         </div>
-      </div>
-        `),
-          cardReference.appendChild(newCard);
-      });*/
-
-      let newCard = document.createElement("div");
-      newCard.classList.add("card", "col-4", "col-md-3", "w-25", "m-5");
-      newCard.innerHTML =
-        newCard.innerHTML +
-        `
-        <img src="${jsonArray[0].album.cover_xl}" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">${jsonArray[0].album.title}</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-      
         `;
-      cardReference.appendChild(newCard);
+        arraySong.push(songListOne[i].title);
+        arrayAlbums.push(songListOne[i].album.title);
+        console.log("lista degli album", arrayAlbums);
 
-      let newCard2 = document.createElement("div");
-      newCard2.classList.add("card", "col-4", "col-md-3", "w-25", "m-5");
-      newCard2.innerHTML =
-        newCard2.innerHTML +
-        `
-        <img src="${jsonArray[1].album.cover_xl}" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">${jsonArray[1].album.title}</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-      
-        `;
-      cardReference.appendChild(newCard2);
-
-      let newCard3 = document.createElement("div");
-      newCard3.classList.add("card", "col-4", "col-md-3", "w-25", "m-5");
-      newCard3.innerHTML =
-        newCard3.innerHTML +
-        `
-        <img src="${jsonArray[6].album.cover_xl}" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">${jsonArray[6].album.title}</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-      
-        `;
-      cardReference.appendChild(newCard3);
-      /************************************************************ */
-      const cardReference2 = document.getElementById("cardAppend2");
-      let newCard4 = document.createElement("div");
-      newCard4.classList.add("card", "col-4", "w-25", "m-5");
-      newCard4.innerHTML =
-        newCard4.innerHTML +
-        `
-        <img src="${jsonArray[6].album.cover_xl}" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">${jsonArray[6].album.title}</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-      
-        `;
-      cardReference2.appendChild(newCard4);
-
-      /***************************CAROUSEL*************************************** */
-      const carouselReference = document.getElementById("carouselImg");
-      carouselReference.innerHTML = `<img src="${jsonArray[12].album.cover_xl}" class="d-block w-100" alt="album cover" />`;
-
-      const carouselReference2 = document.getElementById("carouselImg2");
-      carouselReference2.innerHTML = `<img src="${jsonArray[17].album.cover_xl}" class="d-block w-100" alt="album cover" />`;
-
-      const carouselReference3 = document.getElementById("carouselImg3");
-      carouselReference3.innerHTML = `<img src="${jsonArray[22].album.cover_xl}" class="d-block w-100" alt="album cover" />`;
-
-      /**************************************************************************** */
-      const buttonReference = document.getElementById("buttonDelete");
-      /* const buttonDelete = function () {
-        jsonArray.rank.forEach((song) => {
-
-        });
-      };*/
-
-      let arrayFiltered = jsonArray.rank;
-      jsonArray.forEach((song) => {
-        let arrayRank = song.rank;
-        //console.log(arrayRank);
-
-        arrayRank.forEach((rank) => {
-          console.log("Min:", Math.min.apply(null, rank));
-        });
-      });
+        cardReference.appendChild(newCard);
+      }
     }
   } catch (error) {
     console.log("risposta non andata a buon fine", error);
   }
 };
-
 fetchReference();
+/*********************** CANZONE PREFERITA**********************************/
+const fetchReference2 = async function () {
+  try {
+    let response2 = await fetch(
+      "https://striveschool-api.herokuapp.com/api/deezer/search?q= OneRepublic",
+      { method: "GET" }
+    );
+    console.log(response2);
+    if (response2.ok) {
+      let songs2 = await response2.json();
+      let songListTwo = songs2.data;
+      console.log("songList2", songListTwo);
+
+      const cardReference2 = document.getElementById("cardAppend2");
+      let newCard2 = document.createElement("div");
+      newCard2.classList.add("card", "col-3", "w-25", "m-3");
+      newCard2.innerHTML =
+        newCard2.innerHTML +
+        `
+        <img src="${songListTwo[2].album.cover_xl}" class="card-img-top mt-2 rounded" alt="${songListTwo[2].album.title}">
+        <div class="card-body d-flex flex-column justify-content-center align-items-center w-100">
+          <h5 class="card-title text-center">${songListTwo[2].album.title}</h5>
+          <p class="card-text">${songListTwo[2].title}</p>
+        </div>
+        `;
+
+      arraySong.push(songListTwo[3].title);
+      arrayAlbums.push(songListTwo[3].album.title);
+
+      cardReference2.appendChild(newCard2);
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+fetchReference2();
+/*******************************CAROUSEL******************************************** */
+
+const fetchReferenceCarousel = async function () {
+  try {
+    let responseCarousel = await fetch(
+      "https://striveschool-api.herokuapp.com/api/deezer/search?q= OneRepublic",
+      { method: "GET" }
+    );
+    console.log(responseCarousel);
+    if (responseCarousel.ok) {
+      let songs3 = await responseCarousel.json();
+      let songListThree = songs3.data;
+      console.log("songListThree", songListThree);
+
+      const carouselInner = document.getElementById("carouselImg");
+      carouselInner.innerHTML = `
+      <img src=" ${songListThree[1].album.cover_xl}" class"d-block w-100" alt"album_cover image"/>
+      <h5 class="card-title"> ${songListThree[1].album.title}</h5>
+      `;
+
+      arrayAlbums.push(songListThree[1].album.title);
+    }
+  } catch (error) {
+    console.log(error);
+  }
+
+  try {
+    let responseCarousel2 = await fetch(
+      "https://striveschool-api.herokuapp.com/api/deezer/search?q= Imagine Dragons",
+      { method: "GET" }
+    );
+    console.log("secondo carosello", responseCarousel2);
+    if (responseCarousel2.ok) {
+      let songs4 = await responseCarousel2.json();
+      let songListFour = songs4.data;
+      console.log("songListFour", songListFour);
+      const carouselInner2 = document.getElementById("carouselImg2");
+      carouselInner2.innerHTML = ` <img src=" ${songListFour[1].album.cover_xl}" class"d-block w-100" alt"album_cover image"/>
+      <h5 class="card-title"> ${songListFour[1].album.title}</h5>
+      `;
+
+      arrayAlbums.push(songListFour[1].album.title);
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+fetchReferenceCarousel();
