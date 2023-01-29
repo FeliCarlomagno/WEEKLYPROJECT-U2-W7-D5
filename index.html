@@ -48,41 +48,63 @@
     <!--FINE SECONDA SEZIONE-->
 
     <!--CAROUSEL-->
-    <div class="d-flex justify-content-center">
-      <div
-        id="carouselExampleAutoplaying"
-        class="carousel slide"
-        data-bs-ride="carousel"
-      >
-        <div class="carousel-inner">
-          <div class="carousel-item active w-25" id="carouselImg"></div>
-          <div class="carousel-item w-25" id="carouselImg2">
-            <!--<img src="..." class="d-block w-100" alt="..." />-->
-          </div>
-          <div class="carousel-item w-25" id="carouselImg3">
-            <!--<img src="..." class="d-block w-100" alt="..." />-->
+
+    <div
+      id="carouselExampleFade"
+      class="carousel slide carousel-fade d-flex justify-content-center mt-5"
+      data-bs-ride="carousel"
+    >
+      <div class="carousel-inner">
+        <div
+          class="carousel-item active d-flex flex-column justify-content-center align-items-center"
+          id="carouselImg"
+        >
+          <div class="carousel-caption d-none d-md-block">
+            <h5>First slide label</h5>
+            <p>Some representative placeholder content for the first slide.</p>
           </div>
         </div>
-        <button
-          class="carousel-control-prev"
-          type="button"
-          data-bs-target="#carouselExampleAutoplaying"
-          data-bs-slide="prev"
+        <div
+          class="carousel-item d-flex flex-column justify-content-center align-items-center"
+          id="carouselImg2"
         >
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button
-          class="carousel-control-next"
-          type="button"
-          data-bs-target="#carouselExampleAutoplaying"
-          data-bs-slide="next"
+          <div class="carousel-caption d-none d-md-block">
+            <h5>First slide label</h5>
+            <p>Some representative placeholder content for the first slide.</p>
+          </div>
+        </div>
+        <div
+          class="carousel-item d-flex flex-column justify-content-center align-items-center"
+          id="carouselImg3"
         >
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
+          <div class="carousel-caption d-none d-md-block">
+            <h5>First slide label</h5>
+            <p>Some representative placeholder content for the first slide.</p>
+          </div>
+        </div>
       </div>
+      <button
+        class="carousel-control-prev"
+        type="button"
+        data-bs-target="#carouselExampleFade"
+        data-bs-target="#carouselExampleAutoplaying"
+        data-bs-slide="prev"
+      >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button
+        class="carousel-control-next"
+        type="button"
+        data-bs-target="#carouselExampleFade"
+        data-bs-target="#carouselExampleAutoplaying"
+        data-bs-slide="next"
+      >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
     </div>
+
     <!--FINE CAROUSEL-->
 
     <!--BOTTONE ELIMINA-->

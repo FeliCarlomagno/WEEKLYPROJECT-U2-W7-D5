@@ -90,8 +90,8 @@ const fetchReferenceCarousel = async function () {
 
       const carouselInner = document.getElementById("carouselImg");
       carouselInner.innerHTML = `
-      <img src=" ${songListThree[1].album.cover_xl}" class"d-block w-100" alt"album_cover image"/>
-      <h5 class="card-title"> ${songListThree[1].album.title}</h5>
+      <img src=" ${songListThree[1].album.cover_xl}" class="d-block w-50 rounded" alt="album_cover image"/>
+      <h5 class="card-title mt-3"> ${songListThree[1].album.title}</h5>
       `;
 
       arrayAlbums.push(songListThree[1].album.title);
@@ -99,7 +99,7 @@ const fetchReferenceCarousel = async function () {
   } catch (error) {
     console.log(error);
   }
-
+  /************** */
   try {
     let responseCarousel2 = await fetch(
       "https://striveschool-api.herokuapp.com/api/deezer/search?q= Imagine Dragons",
@@ -111,11 +111,32 @@ const fetchReferenceCarousel = async function () {
       let songListFour = songs4.data;
       console.log("songListFour", songListFour);
       const carouselInner2 = document.getElementById("carouselImg2");
-      carouselInner2.innerHTML = ` <img src=" ${songListFour[1].album.cover_xl}" class"d-block w-100" alt"album_cover image"/>
-      <h5 class="card-title"> ${songListFour[1].album.title}</h5>
+      carouselInner2.innerHTML = ` <img src=" ${songListFour[1].album.cover_xl}" class="d-block w-50 rounded" alt="album_cover image"/>
+      <h5 class="card-title mt-3"> ${songListFour[1].album.title}</h5>
       `;
 
       arrayAlbums.push(songListFour[1].album.title);
+    }
+  } catch (error) {
+    console.log(error);
+  }
+  /************************** */
+  try {
+    let responseCarousel3 = await fetch(
+      "https://striveschool-api.herokuapp.com/api/deezer/search?q= G-Eazy",
+      { method: "GET" }
+    );
+    console.log("terzo carosello", responseCarousel3);
+    if (responseCarousel3.ok) {
+      let songs5 = await responseCarousel3.json();
+      let songListFifth = songs5.data;
+      console.log("songListFour", songListFifth);
+      const carouselInner3 = document.getElementById("carouselImg3");
+      carouselInner3.innerHTML = ` <img src=" ${songListFifth[1].album.cover_xl}" class="d-block w-50 rounded" alt="album_cover image"/>
+      <h5 class="card-title text-center mt-3"> ${songListFifth[1].album.title}</h5>
+      `;
+
+      arrayAlbums.push(songListFifth[1].album.title);
     }
   } catch (error) {
     console.log(error);
